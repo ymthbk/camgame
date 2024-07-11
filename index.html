@@ -128,7 +128,7 @@
             if (keywords.includes("サムネ")) modifiedProbability += 0.1;
             if (keywords.includes("場所")) modifiedProbability += 0.1;
             if (keywords.includes("肖像")) modifiedProbability += 0.1;
-            return Math.min(modifiedProbability, 0.8); // 最大80%を超えないようにする
+            return Math.min(modifiedProbability, 0.9); // 最大90%を超えないようにする
         }
 
         const showCutin = (message, imagePath) => {
@@ -180,7 +180,7 @@
 
         const searchMarket = () => {
             if (motivation > 0 && turns > 0) {
-                const detectionProbability = calculateDetectionProbability(0.2); // 中確率 20%
+                const detectionProbability = calculateDetectionProbability(0.3); // 中確率 30%
                 let gainedScore = 1;
                 if (Math.random() < detectionProbability) {
                     if (keywords.includes("クライマー")) {
@@ -202,7 +202,7 @@
 
         const searchApp = () => {
             if (motivation > 0 && turns > 0) {
-                const detectionProbability = calculateDetectionProbability(0.05); // 低確率 5%
+                const detectionProbability = calculateDetectionProbability(0.15); // 低確率 15%
                 if (keywords.includes("サムネ")) {
                     logAction("キーワード「サムネ」により特定確率がアップしました。");
                 }
@@ -227,7 +227,7 @@
 
         const searchSNS = () => {
             if (motivation > 0 && turns > 0) {
-                const detectionProbability = calculateDetectionProbability(0.01); // 低確率 1%
+                const detectionProbability = calculateDetectionProbability(0.05); // 低確率 10%
                 if (keywords.includes("場所")) {
                     logAction("キーワード「場所」により特定確率がアップしました。");
                 }
@@ -252,7 +252,7 @@
 
         const searchCam = () => {
             if (motivation > 0 && turns > 0) {
-                const detectionProbability = calculateDetectionProbability(0.001); // 低確率 0.1%
+                const detectionProbability = calculateDetectionProbability(0.01); // 低確率 1%
                 if (keywords.includes("肖像")) {
                     logAction("キーワード「肖像」により特定確率がアップしました。");
                 }
@@ -281,6 +281,7 @@
                 turns--;
                 updateStatus();
                 logAction("山に登った。「やっぱり私は山が好きだ」モチベーションが5回復しました。");
+                showCutin("山好き！", "yama_like.png");
             }
         }
 
