@@ -100,7 +100,7 @@
         }
 
         const calculateDetectionProbability = (baseProbability) => {
-            let modifiedProbability = baseProbability + (searchPower * 0.005);
+            let modifiedProbability = baseProbability + (searchPower * 0.01);
             if (keywords.includes("サムネ")) modifiedProbability += 0.1;
             if (keywords.includes("場所")) modifiedProbability += 0.1;
             if (keywords.includes("肖像")) modifiedProbability += 0.1;
