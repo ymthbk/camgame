@@ -26,21 +26,26 @@
             margin-top: 10px;
             padding: 10px;
         }
+        .cutin {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* 画像が見やすいように背景を少し暗くします */
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .cutin img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* アスペクト比を保ちながら、画像全体が表示されるようにする */
+        }
         button {
             display: block;
             margin: 10px 0;
-        }
-        .cutin {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: none;
-            z-index: 1000;
-        }
-        .cutin img {
-            width: auto;
-            height: auto;
         }
     </style>
 </head>
