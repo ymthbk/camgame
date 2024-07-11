@@ -80,6 +80,8 @@
     <div class="cutin" id="cutin">
         <img src="" alt="Cut-in Image">
     </div>
+    <audio id="caughtAudio" src="caught.mp3"></audio>
+    <audio id="notCaughtAudio" src="notCaught.mp3"></audio>
     <script>
         let turns = 25;
         let motivation = 10;
@@ -133,6 +135,13 @@
                 cutinElement.style.display = 'none';
                 cutinElement.removeChild(cutinMessage);
             }, 300);
+        }
+
+        const playAudio = (audioId) => {
+            const audio = document.getElementById(audioId);
+            if (audio) {
+                audio.play();
+            }
         }
 
         const policeConsult = () => {
@@ -281,8 +290,13 @@
 
         const submitReport = () => {
             const finalScore = score + (turns * 1);
-            const resultMessage = finalScore >= 30 ? `犯人を確保しました！最終スコア: ${finalScore}` : `犯人を確保できませんでした。最終スコア: ${finalScore}`;
-            alert(resultMessage);
+            if (finalScore >= 30) {
+                playAudio('caughtAudio');
+                alert(`犯人を確保しました！最終スコア: ${finalScore}`);
+            } else {
+                playAudio('notCaughtAudio');
+                alert(`犯人を確保できませんでした。最終スコア: ${finalScore}`);
+            }
             resetGame();
         }
 
